@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anna Stafford</title>
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel=“icon” type=“image/x-icon” href=“favicon.ico”/>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+</head>
+<body>
+  <nav>
+    <a href="https://www.linkedin.com/feed/?trk=homepage-basic_signin-form_submit" target="_blank">
+      <i class="fab fa-linkedin" alt="linkedin"></i>
+    </a>
+    <a href="https://github.com/Snogurka" target="_blank">
+      <i class="fab fa-github" alt="github"></i>
+    </a>  
+    <a href="/assets/AnnaStafford.pdf" target="_blank">
+      <i class="fas fa-file-alt" alt="resume"></i>
+    </a>  
+    <a href="mailto:nurka_a@yahoo.com">
+      <i class="fas fa-envelope-open" alt="email"></i>
+    </a>  
+  </nav>
+  <div class="opaqueBlock"></div>
+  <h1>Anya's Portfolio</h1>
+  <main>
+    <h3>developer, designer</h3>
+    <section id="aboutMe">
+      <p>
+        Prior to web development, I worked as a bank analyst, combining research with programming, through automating and streamlining processes used for research and report production.
+        "Making things work" is what I like the most, be it coding with Javascript, VBA, or writing SQL. 
+        The design part is almost equally enjoyable, thus a full-stack developer is the best fit for me. Below are some projects I've created.
+      </p>
+    </section>
+    <!-- myProjects section becomes a carousel on click via showProjectDetails(tgt) and back to myProjects via closeProjectDetails()  -->
+    <section id="myProjects" onclick="showProjectDetails(event.target)">
+      <figure>
+        <img src="assets/garden_home.png" alt="My Garden Project - Home">
+        <figcaption>
+          <a target="_blank" href="https://snogurka.github.io/Garden/">My Garden Project - Home Page</a>
+        </figcaption>
+      </figure>
+
+      <figure>
+        <img src="assets/garden_data.png" alt="My Garden Project - Data">
+        <figcaption>
+          <a target="_blank" href="https://snogurka.github.io/Garden/data.html">My Garden Project - Data Page</a>
+        </figcaption>
+      </figure>
+
+      <figure>
+        <img src="assets/garden_design.png" alt="My Garden Project - Design">
+        <figcaption>
+          <a target="_blank" href="https://snogurka.github.io/Garden/design.html">My Garden Project - Design Page</a>
+        </figcaption>
+      </figure>
+
+      <figure>
+        <img src="assets/exercizer.png" alt="Workout Tracker">
+        <figcaption>
+          <a target="_blank" href="https://exerciz.herokuapp.com/">Workout Tracker</a>
+        </figcaption>
+      </figure>
+
+      <figure>
+        <img src="assets/task_tracker.png" alt="Task Tracker">
+        <figcaption>
+          <a target="_blank" href="https://snogurka.github.io/TaskTracker/">Task Tracker - in Progress</a>
+        </figcaption>
+      </figure>
+
+      <figure>
+        <img src="assets/matchRu.png" alt="My Garden Project">
+        <figcaption>Matching Game in iOS - Retired</figcaption>
+      </figure>
+    </section>
+    
+    <section id="aboutProject">
+      
+      <button onclick="closeProjectDetails(event.target)">&times;</button>
+      
+      <h2></h2>
+      
+      <a href="" target="_blank"><img id="pic"></a>
+
+    </section>
+  </main>
+  <footer>&copy; 2022 MIT AnyaS</footer>
+  
+  <script src="scripts/main.js"></script>
+</body>
+</html>
