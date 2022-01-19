@@ -90,9 +90,6 @@ h3 {
 p {
   font-size: large;
 }
-p::first-letter{
-  color: var(--green-color);
-}
 
 #aboutMe {
   top: var(--small-offset);
@@ -106,24 +103,62 @@ p::first-letter{
   position: relative;
   top: calc(var(--small-offset) * 3);
   height: 50vh;
-}
-#myProjects, #carousel {
+
   display: flex;
   justify-content: space-between;
   transition-property: all;
   transition-duration: 1s;
   flex-wrap: wrap;
 }
+
+#myProjects > figure {
+  width: 30%;
+  margin-bottom: calc(var(--small-offset) * 2);
+}
+
 /* a small section near top right of the screen */
 #carousel {
   position: fixed;
-  right: 0;
+  left: var(--small-offset);
+  /* display: grid;
+  height: 500px;
+  width: 3vw;
+  flex-wrap: nowrap; */
+  top: calc(var(--top-offset) * 2);
   z-index: 3;
-  height: calc(var(--top-offset) / 2);
-  width: 30vw;
-  flex-wrap: nowrap;
-  top: calc(var(--top-offset) / 2);
 }
+
+#carousel img {
+  filter: grayscale(100%);
+  height: auto;
+  width: 2em;
+}
+#carousel figcaption {
+  /* opacity: 0; */
+  display: none;
+}
+
+img {
+  height: auto;
+  width: 100%;
+  margin-bottom: var(--small-offset);
+  border: 1px solid var(--dark-color);
+  box-shadow: 3px 3px 3px rgba(0,10,250,0.4);
+  filter: grayscale(70%); 
+  cursor: pointer;
+  transition-property: all;
+  transition-duration: 1s;
+  transition-timing-function: ease-out;
+}
+img:hover {
+  filter: none;
+}
+figcaption {
+  width:  100%;
+  text-align: center;
+  margin-bottom: var(--small-offset);
+}
+
 #aboutProject {
   display: none;
   position: relative;
@@ -148,43 +183,6 @@ p::first-letter{
   }
 }
 
-/* figures are direct children of myprojects and carousel sections */
-figure {
-  width: 30%;
-  margin-bottom: calc(var(--small-offset) * 2);
-}
-img {
-  height: auto;
-  width: 100%;
-  margin-bottom: var(--small-offset);
-  border: 1px solid var(--dark-color);
-  box-shadow: 3px 3px 3px rgba(0,10,250,0.4);
-  filter: grayscale(70%); 
-  cursor: pointer;
-  transition-property: all;
-  transition-duration: 1s;
-  transition-timing-function: ease-out;
-}
-img:hover {
-  filter: none;
-}
-figcaption {
-  width:  100%;
-  text-align: center;
-  margin-bottom: var(--small-offset);
-}
-
-/* figures of class carousel */
-#carousel img {
-  filter: grayscale(100%);
-  height: 90%;
-  width: auto;
-}
-#carousel figcaption {
-  /* opacity: 0; */
-  display: none;
-}
-
 button {
   position: absolute;
   height: 2em;
@@ -200,20 +198,19 @@ button {
 /* a clicked project in about project section */
 #projectChoice {
   filter: none !important;
-  margin: 0;
+  /* margin: 0; */
 }
 #pic {
   position: relative;
   height: auto;
   width: 25vw;
-  margin: var(--small-offset) auto var(--side-offset) calc(37.5vw - var(--side-offset));
+  margin: var(--small-offset) auto var(--small-offset) calc(37.5vw - var(--side-offset));
 }
 .message {
   position: absolute;
-  color: var(--light-color);
-  top: 30%;
-  left: 6vw;
-  width: 14vw;
+  color: var(--fav-gray-color);
+  left: 1vw;
+  width: 60vw;
 }
 
 a {
@@ -270,19 +267,31 @@ footer {
     width: calc(95vw - var(--side-offset));
     margin-bottom: 20em;
   }
-  figure {
+  #myProjects > figure {
     margin-bottom: 0;
     width: 10%;
   }
   #carousel {
+    
+    display: flex;
+    justify-content: space-between;
+    transition-property: all;
+    transition-duration: 1s;
+    flex-wrap: wrap;
+
     height: calc(var(--desk-top-offset) / 2);
     width: 30vw;
     right: var(--small-offset);
+    left: auto;
     flex-wrap: nowrap;
     top: calc(var(--desk-top-offset) / 2);
   }
   #carousel > figure {
     height: 100%;
+    width: auto;
+  }
+  #carousel img {
+    height: 90%;
     width: auto;
   }
   #pic {
@@ -306,5 +315,10 @@ footer {
       width: 75%;
       height: 100%;
     }
+  }
+  .message {
+    position: absolute;
+    top: 7em;
+    width: 14vw;
   }
 }

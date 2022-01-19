@@ -6,6 +6,14 @@ function showProjectDetails(tgt) {
 
   // find and display the about section
   const aboutProject = document.getElementById("aboutProject");
+  
+  // extract the chosen project's name from the clicked image's source (tgt.source)
+  const projectName = tgt.src.substring(tgt.src.lastIndexOf('/')+1).replace(".png","");
+
+  // update the title H2 text of the project shown, capitalizing the first letter of each word in the title
+  let ttl = "";
+  projectName.split("_").forEach(x => ttl += x.replace(x.charAt(0), " " + x.charAt(0).toUpperCase()));
+  aboutProject.getElementsByTagName("H2")[0].innerText = ttl.trimStart();
     
   // if this function is activated by clicking on a project from the start page..
   if (tgt.parentElement.parentElement.id == "myProjects") {
@@ -36,13 +44,10 @@ function showProjectDetails(tgt) {
   const msg = document.getElementsByClassName("message")[0];
   if (msg) msg.style.display = "none";
 
-  // extract the chosen project's name from the clicked image's source (tgt.source)
-  const projectName = tgt.src.substring(tgt.src.lastIndexOf('/')+1).replace(".png","");
-
   // find the large project picture element
   const projPic = document.getElementById("pic");
   // if it exists, remove click listener from project photo
-  if (projPic.getAttribute('listener')){
+  if (projPic.getAttribute("listener")){
     projPic.removeEventListener("click", displayMsg);
   }
 
@@ -58,14 +63,10 @@ function showProjectDetails(tgt) {
     projPic.parentElement.addEventListener("click", displayMsg);
   }
 
-  // // set the photo source and lessened opacity
-  // projPic.setAttribute("src", tgt.src);
+  // lessen photo's opacity
   projPic.style.opacity = "0.8";
 
-  // update the title H2 text of the project shown, capitalizing the first letter of each word in the title
-  let ttl = "";
-  projectName.split("_").forEach(x => ttl += x.replace(x.charAt(0), " " + x.charAt(0).toUpperCase()));
-  aboutProject.getElementsByTagName("H2")[0].innerText = ttl.trimStart();
+
 
   //create the "about project" article element
   var articleAbout = document.createElement("article");
@@ -85,9 +86,10 @@ function showProjectDetails(tgt) {
     articleAbout.removeChild(articleAbout.children[0]);
   }
 
-  fetch('../assets/descr.json').then((res) => {
+  fetch('assets/descr.json').then((res, err) => {
+    if (res.status >= 300) console.log(res.statusText);
     return res.json();
-  }). then((myObj) => {
+  }).then((myObj) => {
     if (projectName.toString().slice(0,6) === "garden") {
       const p = document.createElement("p");
       p.innerText = myObj["gardenPre"];
@@ -96,6 +98,8 @@ function showProjectDetails(tgt) {
     const par = document.createElement("p");
     par.innerText = myObj[projectName];
     articleAbout.appendChild(par);
+  }).catch((error) => {
+    console.log("Unable to fetch the descriptions. ", error);
   });
 
   //todo: add shadow light - white light from small project photo in carousel to the large on, displayed with details
