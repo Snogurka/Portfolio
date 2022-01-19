@@ -1,3 +1,3 @@
 # Portfolio
-Portfolio - my third idea
+Portfolio
 A showcase of my projects
